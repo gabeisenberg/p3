@@ -9,6 +9,7 @@
 #include <regex>
 #include <sstream>
 #include <map>
+#include <string>
 
 struct Element {
     std::string filename;

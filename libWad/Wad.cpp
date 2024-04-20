@@ -7,10 +7,10 @@
 Wad::Wad(const std::string &path) {
     //initialize fstream object
     fileStream.open(path, std::ios::in | std::ios::out | std::ios::binary);
-    if (!fileStream.is_open()) {
+    /*if (!fileStream.is_open()) {
         std::cout << "did not open was path!" << std::endl;
         throw new std::runtime_error("");
-    }
+    }*/
     //read header (from ernesto video)
     fileMagic = new char[5];
     fileMagic[4] = '\0';
@@ -31,7 +31,7 @@ void Wad::setAbsPaths(Element* e, std::string s) {
         s += '/';
     }
     std::cout << s << std::endl;
-    absPaths.emplace(s, e);
+    absPaths.insert(std::make_pair(s, e));
     for (Element* f: e->files) {
         setAbsPaths(f, s);
     }
